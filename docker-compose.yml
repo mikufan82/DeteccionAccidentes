@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  notebook1:
+    image: jupyter/scipy-notebook:latest
+    container_name: notebook_modelo_para_accidentes
+    volumes:
+      - ./ModeloParaAccidentes_(2).ipynb:/home/jovyan/ModeloParaAccidentes_(2).ipynb
+      - ./requirements.txt:/home/jovyan/requirements.txt
+    command: >
+      start-notebook.sh --NotebookApp.token=''
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    ports:
+      - "8888:8888"
+
+  notebook2:
+    image: jupyter/scipy-notebook:latest
+    container_name: notebook_random_forest
+    volumes:
+      - ./RandomForestAccidentes.ipynb:/home/jovyan/RandomForestAccidentes.ipynb
+      - ./requirements.txt:/home/jovyan/requirements.txt
+    command: >
+      start-notebook.sh --NotebookApp.token=''
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    ports:
+      - "8889:8888"
+
+  notebook3:
+    image: jupyter/scipy-notebook:latest
+    container_name: notebook_vits2
+    volumes:
+      - ./VITS2.ipynb:/home/jovyan/VITS2.ipynb
+      - ./requirements.txt:/home/jovyan/requirements.txt
+    command: >
+      start-notebook.sh --NotebookApp.token=''
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    ports:
+      - "8890:8888"
